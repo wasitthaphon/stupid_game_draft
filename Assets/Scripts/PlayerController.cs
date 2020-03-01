@@ -11,11 +11,16 @@ public class PlayerController : MonoBehaviour
     public Transform feetPos;
     public float speed;
     public float jumpForce;
-
+    public GameObject projectile_bullet;
+    
     private bool isGround;
     public LayerMask whatIsGround;
     public float checkRadius;
 
+    public float bullet_speed = 2f;
+
+
+   
     Vector2 lookDirection = new Vector2(0.1f, 0);
  
 
@@ -33,10 +38,10 @@ public class PlayerController : MonoBehaviour
         Vector2 position = rigidbody2D.position;
         
         float horizontal = Input.GetAxis("Horizontal");
-            
-        
+
 
         Vector2 move = new Vector2(horizontal, 0f);
+        
 
 
 
@@ -53,16 +58,37 @@ public class PlayerController : MonoBehaviour
             rigidbody2D.velocity = Vector2.up * jumpForce;
         }
 
+
         position.x = position.x + speed * horizontal * Time.deltaTime;
         rigidbody2D.position = position;
 
         animator.SetFloat("Move X", lookDirection.x);
         animator.SetFloat("Speed", move.magnitude);
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("Fire projectile bullet");
+            fireBullet();
+        }
+
 
         Debug.Log(isGround + " : " +  " Look: " + lookDirection + " Magnitude: " + move.magnitude + " Move : " + move);
         
     }
 
+
+    public void fireBullet()
+    { 
+        int multiplier = 1;
+
+        if (lookDirection.x < 0)
+        {
+            multiplier = -1;
+        }
+
+        GameObject clone = (Instantiate(projectile_bullet, transform.position, transform.rotation));
+
+        clone.GetComponent<Rigidbody2D>().velocity = transform.right * bullet_speed * multiplier;
+    }
 
 }
