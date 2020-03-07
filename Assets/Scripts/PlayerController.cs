@@ -50,8 +50,8 @@ public class PlayerController : MonoBehaviour
         if (!Mathf.Approximately(move.x , 0.0f))
         {
             lookDirection.Set(move.x, 0f);
-            //lookDirection.Normalize();
         }
+
 
         if(isGround && Input.GetKeyDown(KeyCode.Space))
         {
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        Debug.Log(isGround + " : " +  " Look: " + lookDirection + " Magnitude: " + move.magnitude + " Move : " + move);
+        Debug.Log(isGround + " : " +  " Look: " + lookDirection.x + " Magnitude: " + move.magnitude + " Move : " + move.x);
         
     }
 

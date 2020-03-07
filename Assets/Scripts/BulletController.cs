@@ -7,9 +7,12 @@ public class BulletController : MonoBehaviour
 
     public float speed = 20f;
     public Rigidbody2D rb;
+    public List<string> tagShouldDestroy;
     // Start is called before the first frame update
     void Start()
     {
+        tagShouldDestroy.Add("ground");
+        tagShouldDestroy.Add("blockPath");
         //rb = GetComponent<Rigidbody2D>();
         //rb.velocity = transform.right * speed ; 
     }
@@ -22,10 +25,14 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "main_background")
+        for (int i = 0; i < tagShouldDestroy.Count; i++)
         {
-            Destroy(gameObject);
+            if (collision.tag.Equals(tagShouldDestroy[i]))
+            {
+                Destroy(this.gameObject);
+            }
         }
+        
 
     }
 }

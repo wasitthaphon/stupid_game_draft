@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - blockPath
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Player
   - Map
-  - 
+  - BlockPath
   - 
   - 
   - 
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1449845353
+    locked: 0
+  - name: block_background
+    uniqueID: 3708841567
     locked: 0
   - name: main_background
     uniqueID: 1792300539
