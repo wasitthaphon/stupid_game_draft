@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1690098202}
   - component: {fileID: 1690098201}
   - component: {fileID: 1690098203}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block_background
-  m_TagString: Untagged
+  m_TagString: blockPath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
