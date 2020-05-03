@@ -18,7 +18,7 @@ TagManager:
   - Player
   - Map
   - BlockPath
-  - 
+  - Confiner
   - 
   - 
   - 
@@ -46,12 +46,12 @@ TagManager:
   - name: cloud_background
     uniqueID: 6003923
     locked: 0
-  - name: Player
-    uniqueID: 1449845353
-    locked: 0
   - name: block_background
     uniqueID: 3708841567
     locked: 0
   - name: main_background
     uniqueID: 1792300539
+    locked: 0
+  - name: Player
+    uniqueID: 1449845353
     locked: 0
