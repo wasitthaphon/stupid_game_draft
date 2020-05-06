@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
         Vector2 position = rigidbody2D.position;
         moveX = Input.GetAxis("Horizontal");
 
-        rigidbody2D.position = position + new Vector2(moveX, 0) * speed * Time.deltaTime;
-
+        rigidbody2D.position = position + new Vector2(moveX, 0) * speed * Time.fixedDeltaTime;
+        
        //Vector3 targetVelocity = new Vector2(moveX * 5f, rigidbody2D.velocity.y);
        //rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity, ref m_velocity, m_MovementSmoothing);
 
@@ -51,11 +51,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {    
         isGround = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+        Vector3 mousePosition = Input.mousePosition;
+        Vector2 direction = new Vector2(0, 0);
+
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        direction.x = mousePosition.x - transform.position.x;
+
+
         
-        if (moveX > 0f && !lookRight)
+        if ((moveX > 0f && !lookRight) || 
+            (direction.x > 0 && !lookRight && Mathf.Approximately(moveX, 0)))
         {
             Flip();
-        }else if(moveX < 0f && lookRight)
+        }else if((moveX < 0f && lookRight) || 
+            (direction.x < 0 && lookRight && Mathf.Approximately(moveX, 0)))
         {
             Flip();
         }
